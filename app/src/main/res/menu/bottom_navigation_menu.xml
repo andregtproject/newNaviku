@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_mobility"
+        android:title="Mobility"
+        android:icon="@drawable/icon_mobility" />
+    <item
+        android:id="@+id/navigation_text_recognition"
+        android:title="Text Recognition"
+        android:icon="@drawable/icon_text_recognition" />
+</menu>

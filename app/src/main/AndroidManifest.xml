@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.andre_gt.newnaviku" >
+
+    <uses-feature android:name="android.hardware.camera" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+    <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/qrcode"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/qrcode"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.NewNaviku"
+        tools:targetApi="31" >
+        <activity
+            android:name=".text_recognition.HomeTextActivity"
+            android:exported="true" />
+        <activity
+            android:name=".text_recognition.GenerateTextActivity"
+            android:exported="true" />
+        <activity
+            android:name=".text_recognition.TextRecognitionActivity"
+            android:exported="true" />
+        <activity
+            android:name=".mobility.ScannerActivity"
+            android:exported="true" />
+        <activity
+            android:name=".mobility.GenerateCodeActivity"
+            android:exported="true" />
+        <activity
+            android:name=".mobility.HomeMobilityActivity"
+            android:exported="true" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
