@@ -55,4 +55,14 @@
             android:layout_height="wrap_content"
             android:text="Share QR Code" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/showGeneratedCodeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/saveShareLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="Show Generated Code" />
+
 </RelativeLayout>

@@ -9,6 +9,7 @@ import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -17,6 +18,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -37,8 +39,9 @@ public class GenerateCodeActivity extends AppCompatActivity {
     private Button generateButton;
     private Button saveButton;
     private Button shareButton;
+    private Button showGeneratedCodeButton;
 
-    // Ganti dengan logo aplikasi Anda (pastikan sudah siapkan logo di res/drawable)
+    // logo aplikasi
     private Bitmap logoBitmap;
 
     @Override
@@ -51,14 +54,13 @@ public class GenerateCodeActivity extends AppCompatActivity {
         generateButton = findViewById(R.id.generateButton);
         saveButton = findViewById(R.id.saveButton);
         shareButton = findViewById(R.id.shareButton);
+        showGeneratedCodeButton = findViewById(R.id.showGeneratedCodeButton);
 
         // Inisialisasi logo aplikasi dan mengatur ukuran menjadi 2 cm x 2 cm
-        logoBitmap = getResizedLogo(R.drawable.qrcode); // Gantilah dengan sumber logo aplikasi Anda
+        logoBitmap = getResizedLogo(R.drawable.logo_navigt);
 
-        // Initial visibility state
         setButtonVisibility(View.INVISIBLE);
 
-        // Tambahkan pemantauan perubahan pada EditText
         dataEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -83,11 +85,13 @@ public class GenerateCodeActivity extends AppCompatActivity {
         generateButton.setOnClickListener(v -> generateQRCode());
         saveButton.setOnClickListener(v -> saveQRCode());
         shareButton.setOnClickListener(v -> shareQRCode());
+        showGeneratedCodeButton.setOnClickListener(v -> showGeneratedCode());
     }
 
     private void setButtonVisibility(int visibility) {
         saveButton.setVisibility(visibility);
         shareButton.setVisibility(visibility);
+        showGeneratedCodeButton.setVisibility(visibility);
     }
 
     private void generateQRCode() {
@@ -117,6 +121,18 @@ public class GenerateCodeActivity extends AppCompatActivity {
         }
     }
 
+    private void showGeneratedCode() {
+        String generatedText = dataEditText.getText().toString().trim();
+        if (!generatedText.isEmpty()) {
+            Intent intent = new Intent(this, DisplayGeneratedCodeActivity.class);
+            intent.putExtra("generatedText", generatedText);
+            startActivity(intent);
+        } else {
+            Toast.makeText(this, "Generate a QR Code first before displaying.", Toast.LENGTH_LONG).show();
+        }
+    }
+
+
     private Bitmap generateQRCode(String data, int size) {
         try {
             BitMatrix bitMatrix = new MultiFormatWriter().encode(data, BarcodeFormat.QR_CODE, size, size);
@@ -143,8 +159,9 @@ public class GenerateCodeActivity extends AppCompatActivity {
     private Bitmap addLogoAndNameToQRCode(Bitmap qrCodeBitmap, Bitmap logo, String appName) {
         int qrCodeSize = qrCodeBitmap.getWidth();
         int logoSize = qrCodeSize / 7;
-        int margin = -5;
-        int bottomMargin = -5;
+        int margin = -15;
+        int bottomMargin = -10;
+
 
         Bitmap resultBitmap = qrCodeBitmap.copy(qrCodeBitmap.getConfig(), true);
         Canvas canvas = new Canvas(resultBitmap);
@@ -164,16 +181,32 @@ public class GenerateCodeActivity extends AppCompatActivity {
     }
 
     private void saveQRCode() {
-        Bitmap qrCodeBitmap = ((BitmapDrawable) qrImageView.getDrawable()).getBitmap();
+        String generatedText = dataEditText.getText().toString().trim();
 
-        if (qrCodeBitmap != null) {
-            String fileName = "QRCode.png";
+        if (!generatedText.isEmpty()) {
+            Bitmap qrCodeBitmap = ((BitmapDrawable) qrImageView.getDrawable()).getBitmap();
+
+            // Menentukan direktori penyimpanan di dalam folder "Naviku"
+            String directoryName = "Naviku";
+            File directory = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), directoryName);
+
+            // Jika direktori belum ada, buat direktori baru
+            if (!directory.exists()) {
+                directory.mkdirs();
+            }
+
+            // Membuat nama file untuk gambar QR Code sesuai dengan teks hasil pemindaian
+            String fileName = generatedText + "_QRCode.png";
+            File file = new File(directory, fileName);
+
             try {
-                File file = new File(getCacheDir(), fileName);
+                // Menyimpan gambar QR Code ke file di direktori "naviku"
                 OutputStream outputStream = new FileOutputStream(file);
                 qrCodeBitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
                 outputStream.flush();
                 outputStream.close();
+
+                // Menampilkan pesan bahwa QR Code berhasil disimpan
                 Toast.makeText(this, "QR Code saved to " + file.getAbsolutePath(), Toast.LENGTH_LONG).show();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -185,6 +218,7 @@ public class GenerateCodeActivity extends AppCompatActivity {
             Toast.makeText(this, "Generate a QR Code first before saving.", Toast.LENGTH_LONG).show();
         }
     }
+
 
     private void shareQRCode() {
         Bitmap qrCodeBitmap = ((BitmapDrawable) qrImageView.getDrawable()).getBitmap();

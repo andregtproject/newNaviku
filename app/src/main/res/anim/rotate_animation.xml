@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Scale and rotate together -->
+    <scale
+        android:fromXScale="0.5"
+        android:toXScale="1.0"
+        android:fromYScale="0.5"
+        android:toYScale="1.0"
+        android:pivotX="50%"
+        android:pivotY="50%"
+        android:duration="1000" />
+
+    <rotate
+        android:fromDegrees="0"
+        android:toDegrees="360"
+        android:pivotX="50%"
+        android:pivotY="50%"
+        android:duration="1000" />
+
+    <!-- Bounce animation with overshoot -->
+    <translate
+        android:fromYDelta="0"
+        android:toYDelta="-100"
+        android:duration="2000"
+        android:interpolator="@android:anim/overshoot_interpolator" />
+
+    <!-- Sequentially combine animations -->
+    <set android:ordering="sequentially">
+        <!-- Fade in -->
+        <alpha
+            android:fromAlpha="0.0"
+            android:toAlpha="1.0"
+            android:duration="1000" />
+
+        <!-- Move up -->
+        <translate
+            android:fromYDelta="0"
+            android:toYDelta="-50"
+            android:duration="1000" />
+    </set>
+
+    <!-- Alpha animation with repeat and reverse -->
+    <alpha
+        android:fromAlpha="1.0"
+        android:toAlpha="0.0"
+        android:duration="1000"
+        android:repeatCount="2"
+        android:repeatMode="reverse" />
+
+</set>

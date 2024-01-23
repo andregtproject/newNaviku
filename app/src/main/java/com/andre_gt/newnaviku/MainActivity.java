@@ -14,6 +14,10 @@ public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView bottomNavigationView;
 
+    // Deklarasikan instance fragment
+    private HomeMobilityFragment homeMobilityFragment;
+    private HomeTextFragment homeTextFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,14 +25,18 @@ public class MainActivity extends AppCompatActivity {
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
+        // Inisialisasi instance fragment
+        homeMobilityFragment = new HomeMobilityFragment();
+        homeTextFragment = new HomeTextFragment();
+
         // Menangani item yang dipilih pada BottomNavigationView
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.navigation_mobility:
-                    loadFragment(new HomeMobilityFragment());
+                    loadFragment(homeMobilityFragment);
                     return true;
                 case R.id.navigation_text_recognition:
-                    loadFragment(new HomeTextFragment());
+                    loadFragment(homeTextFragment);
                     return true;
             }
             return false;
@@ -44,5 +52,13 @@ public class MainActivity extends AppCompatActivity {
         transaction.replace(R.id.contentFrame, fragment);
         transaction.addToBackStack(null);
         transaction.commit();
+    }
+
+    // Keluar aplikasi
+    @Override
+    public void onBackPressed() {
+        if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+            finish();
+        }
     }
 }
