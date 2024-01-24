@@ -19,6 +19,9 @@
         android:theme="@style/Theme.NewNaviku"
         tools:targetApi="31">
         <activity
+            android:name=".mobility.DisplayQRCodeDetailsActivity"
+            android:exported="false" />
+        <activity
             android:name=".mobility.DisplayGeneratedCodeActivity"
             android:exported="false" />
         <activity

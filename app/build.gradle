@@ -3,13 +3,13 @@ plugins {
 }
 
 android {
-    compileSdk 33 // Update compileSdkVersion to at least 33
-    buildToolsVersion "33.0.0" // Update to the latest build tools version
+    compileSdk 33
+    buildToolsVersion "33.0.0"
 
     defaultConfig {
         applicationId "com.example.qr_code_generatorscanner"
         minSdk 24
-        targetSdk 33 // Update targetSdkVersion to at least 33
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 

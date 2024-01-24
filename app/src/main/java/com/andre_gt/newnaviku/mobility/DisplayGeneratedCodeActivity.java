@@ -1,13 +1,10 @@
 package com.andre_gt.newnaviku.mobility;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Environment;
-import android.view.View;
-import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -30,17 +27,16 @@ public class DisplayGeneratedCodeActivity extends AppCompatActivity implements Q
         setContentView(R.layout.activity_display_generated_code);
 
         recyclerView = findViewById(R.id.recyclerView);
-        savedQRCodePaths = getSavedQRCodePaths(); // Get paths of saved QR codes
+        savedQRCodePaths = getSavedQRCodePaths();
         qrCodeAdapter = new QRCodeAdapter(savedQRCodePaths, this);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(qrCodeAdapter);
     }
 
-    // Get paths of saved QR codes from storage
     private List<String> getSavedQRCodePaths() {
         List<String> paths = new ArrayList<>();
-        String directoryName = "Naviku";
+        String directoryName = "Netra Sync";
         File directory = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), directoryName);
 
         if (directory.exists() && directory.isDirectory()) {
@@ -56,13 +52,27 @@ public class DisplayGeneratedCodeActivity extends AppCompatActivity implements Q
         return paths;
     }
 
-    // Implement the onItemClick method from QRCodeAdapter.OnItemClickListener
     @Override
     public void onItemClick(int position) {
-        // Handle the click on a QR code in the list (e.g., share or download)
         String selectedQRCodePath = savedQRCodePaths.get(position);
 
-        // Example: Display a toast message for demonstration
-        Toast.makeText(this, "Clicked on item at position " + position, Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, DisplayQRCodeDetailsActivity.class);
+        intent.putExtra("qrCodePath", selectedQRCodePath);
+        startActivityForResult(intent, 1);
+    }
+
+    public void updateData(List<String> newData) {
+        savedQRCodePaths.clear();
+        savedQRCodePaths.addAll(newData);
+        qrCodeAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1 && resultCode == RESULT_OK) {
+            savedQRCodePaths = getSavedQRCodePaths();
+            updateData(savedQRCodePaths);
+        }
     }
 }

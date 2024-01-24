@@ -70,6 +70,6 @@ public class QRCodeAdapter extends RecyclerView.Adapter<QRCodeAdapter.QRCodeView
     }
 
     private String getTranslationForQRCode(String qrCodePath) {
-        return "Translation for " + qrCodePath;
+        return qrCodePath;
     }
 }

@@ -17,8 +17,8 @@
         android:id="@+id/generateButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_below="@id/dataEditText"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
         android:text="Generate QR Code" />
 
@@ -26,7 +26,7 @@
         android:id="@+id/qrImageView"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:layout_below="@id/generateButton"
+        android:layout_below="@id/showGeneratedCodeButton"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
         android:elevation="4dp"
@@ -60,7 +60,7 @@
         android:id="@+id/showGeneratedCodeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/saveShareLayout"
+        android:layout_below="@id/generateButton"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
         android:text="Show Generated Code" />

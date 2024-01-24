@@ -67,9 +67,24 @@ public class TextRecognitionActivity extends AppCompatActivity {
         Button copyButton = findViewById(R.id.copyButton);
         Button shareButton = findViewById(R.id.shareButton);
 
+        copyButton.setOnClickListener(v -> {
+            String copiedText = textResult.getText().toString();
+            if (!copiedText.isEmpty()) {
+                copyTextToClipboard(copiedText);
+                Toast.makeText(this, "Text copied to clipboard", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "No text to copy", Toast.LENGTH_SHORT).show();
+            }
+        });
 
-        copyButton.setOnClickListener(v -> copyTextToClipboard(textResult.getText().toString()));
-        shareButton.setOnClickListener(v -> shareText(textResult.getText().toString()));
+        shareButton.setOnClickListener(v -> {
+            String sharedText = textResult.getText().toString();
+            if (!sharedText.isEmpty()) {
+                shareText(sharedText);
+            } else {
+                Toast.makeText(this, "No text to share", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         // Menambahkan OnClickListener untuk teks yang berhasil diakuisisi
         textResult.setOnClickListener(v -> {

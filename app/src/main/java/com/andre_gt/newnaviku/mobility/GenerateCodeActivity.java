@@ -41,7 +41,6 @@ public class GenerateCodeActivity extends AppCompatActivity {
     private Button shareButton;
     private Button showGeneratedCodeButton;
 
-    // logo aplikasi
     private Bitmap logoBitmap;
 
     @Override
@@ -56,7 +55,6 @@ public class GenerateCodeActivity extends AppCompatActivity {
         shareButton = findViewById(R.id.shareButton);
         showGeneratedCodeButton = findViewById(R.id.showGeneratedCodeButton);
 
-        // Inisialisasi logo aplikasi dan mengatur ukuran menjadi 2 cm x 2 cm
         logoBitmap = getResizedLogo(R.drawable.logo_navigt);
 
         setButtonVisibility(View.INVISIBLE);
@@ -73,11 +71,11 @@ public class GenerateCodeActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {
                 String newText = editable.toString().trim();
-                generateButton.setEnabled(newText.length() > 0); // Enable/disable generateButton based on text length
+                generateButton.setEnabled(newText.length() > 0);
 
                 if (newText.length() == 0) {
-                    qrImageView.setImageBitmap(null); // Clear QR code if text is empty
-                    setButtonVisibility(View.INVISIBLE); // Hide buttons if text is empty
+                    qrImageView.setImageBitmap(null);
+                    setButtonVisibility(View.INVISIBLE);
                 }
             }
         });
@@ -91,7 +89,6 @@ public class GenerateCodeActivity extends AppCompatActivity {
     private void setButtonVisibility(int visibility) {
         saveButton.setVisibility(visibility);
         shareButton.setVisibility(visibility);
-        showGeneratedCodeButton.setVisibility(visibility);
     }
 
     private void generateQRCode() {
@@ -101,18 +98,15 @@ public class GenerateCodeActivity extends AppCompatActivity {
             Bitmap qrCodeBitmap = generateQRCode(data, qrSize);
 
             if (qrCodeBitmap != null) {
-                String appName = "Naviku";
+                String appName = "Netra Sync";
                 Bitmap resultBitmap = addLogoAndNameToQRCode(qrCodeBitmap, logoBitmap, appName);
 
                 qrImageView.setImageBitmap(resultBitmap);
 
-                // Tampilkan pesan jika berhasil membuat QR Code
                 Toast.makeText(this, "QR Code generated successfully", Toast.LENGTH_SHORT).show();
 
-                // Update visibility after generating QR code
                 setButtonVisibility(View.VISIBLE);
             } else {
-                // Clear image view and hide buttons if QR code generation fails
                 qrImageView.setImageBitmap(null);
                 setButtonVisibility(View.INVISIBLE);
             }
@@ -128,7 +122,7 @@ public class GenerateCodeActivity extends AppCompatActivity {
             intent.putExtra("generatedText", generatedText);
             startActivity(intent);
         } else {
-            Toast.makeText(this, "Generate a QR Code first before displaying.", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Generate and save a QR Code first before displaying.", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -186,33 +180,26 @@ public class GenerateCodeActivity extends AppCompatActivity {
         if (!generatedText.isEmpty()) {
             Bitmap qrCodeBitmap = ((BitmapDrawable) qrImageView.getDrawable()).getBitmap();
 
-            // Menentukan direktori penyimpanan di dalam folder "Naviku"
-            String directoryName = "Naviku";
+            String directoryName = "Netra Sync";
             File directory = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), directoryName);
 
-            // Jika direktori belum ada, buat direktori baru
             if (!directory.exists()) {
                 directory.mkdirs();
             }
 
-            // Membuat nama file untuk gambar QR Code sesuai dengan teks hasil pemindaian
-            String fileName = generatedText + "_QRCode.png";
+            String fileName = generatedText + ".png";
             File file = new File(directory, fileName);
 
             try {
-                // Menyimpan gambar QR Code ke file di direktori "naviku"
                 OutputStream outputStream = new FileOutputStream(file);
                 qrCodeBitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
                 outputStream.flush();
                 outputStream.close();
 
-                // Menampilkan pesan bahwa QR Code berhasil disimpan
                 Toast.makeText(this, "QR Code saved to " + file.getAbsolutePath(), Toast.LENGTH_LONG).show();
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
-            // Update visibility after saving QR code
             setButtonVisibility(View.VISIBLE);
         } else {
             Toast.makeText(this, "Generate a QR Code first before saving.", Toast.LENGTH_LONG).show();
@@ -234,7 +221,6 @@ public class GenerateCodeActivity extends AppCompatActivity {
             shareIntent.setType("image/*");
             startActivity(Intent.createChooser(shareIntent, "Share QR Code"));
 
-            // Update visibility after sharing QR code
             setButtonVisibility(View.VISIBLE);
         } else {
             Toast.makeText(this, "Generate a QR Code first before sharing.", Toast.LENGTH_LONG).show();
@@ -242,14 +228,11 @@ public class GenerateCodeActivity extends AppCompatActivity {
     }
 
     private Bitmap getResizedLogo(int resId) {
-        // Konversi ukuran dalam cm ke piksel
         int widthPx = (int) (0.3 * getResources().getDisplayMetrics().xdpi / 2.54);
         int heightPx = (int) (0.3 * getResources().getDisplayMetrics().ydpi / 2.54);
 
-        // Mengambil logo dari sumber Drawable
         Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), resId);
 
-        // Meresize logo ke ukuran yang diinginkan
         return Bitmap.createScaledBitmap(originalBitmap, widthPx, heightPx, false);
     }
 }
