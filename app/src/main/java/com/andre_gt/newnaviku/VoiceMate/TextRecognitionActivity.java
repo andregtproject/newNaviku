@@ -1,4 +1,4 @@
-package com.andre_gt.newnaviku.text_recognition;
+package com.andre_gt.newnaviku.VoiceMate;
 
 import android.Manifest;
 import android.content.ClipData;
@@ -71,9 +71,9 @@ public class TextRecognitionActivity extends AppCompatActivity {
             String copiedText = textResult.getText().toString();
             if (!copiedText.isEmpty()) {
                 copyTextToClipboard(copiedText);
-                Toast.makeText(this, "Text copied to clipboard", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.copy_desc), Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(this, "No text to copy", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.copy_failed), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -82,13 +82,11 @@ public class TextRecognitionActivity extends AppCompatActivity {
             if (!sharedText.isEmpty()) {
                 shareText(sharedText);
             } else {
-                Toast.makeText(this, "No text to share", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.no_text_to_share), Toast.LENGTH_SHORT).show();
             }
         });
 
-        // Menambahkan OnClickListener untuk teks yang berhasil diakuisisi
         textResult.setOnClickListener(v -> {
-            // Memanggil kembali fungsi untuk berbicara ketika teks di layar disentuh
             if (!textResult.getText().toString().isEmpty()) {
                 speakOut(textResult.getText().toString());
             }
@@ -146,7 +144,6 @@ public class TextRecognitionActivity extends AppCompatActivity {
 
         @Override
         public void surfaceChanged(@NonNull SurfaceHolder holder, int format, int width, int height) {
-            // Not needed in this example
         }
 
         @Override
@@ -159,7 +156,6 @@ public class TextRecognitionActivity extends AppCompatActivity {
 
         @Override
         public void release() {
-            // Release resources
         }
 
         @Override
@@ -215,10 +211,10 @@ public class TextRecognitionActivity extends AppCompatActivity {
 
     private void copyTextToClipboard(String text) {
         ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-        ClipData clip = ClipData.newPlainText("Copied Text", text);
+        ClipData clip = ClipData.newPlainText(getString(R.string.copy_txt), text);
         if (clipboard != null) {
             clipboard.setPrimaryClip(clip);
-            Toast.makeText(this, "Text copied to clipboard", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.copy_desc), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -226,6 +222,6 @@ public class TextRecognitionActivity extends AppCompatActivity {
         Intent shareIntent = new Intent(Intent.ACTION_SEND);
         shareIntent.setType("text/plain");
         shareIntent.putExtra(Intent.EXTRA_TEXT, text);
-        startActivity(Intent.createChooser(shareIntent, "Share Text"));
+        startActivity(Intent.createChooser(shareIntent, getString(R.string.share_title)));
     }
 }

@@ -6,8 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.andre_gt.newnaviku.mobility.HomeMobilityFragment;
-import com.andre_gt.newnaviku.text_recognition.HomeTextFragment;
+import com.andre_gt.newnaviku.SightHub.HomeMobilityFragment;
+import com.andre_gt.newnaviku.VoiceMate.HomeTextFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {

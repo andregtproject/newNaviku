@@ -1,68 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <EditText
-        android:id="@+id/dataEditText"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="Enter data for QR Code"
-        android:padding="12dp"
-        android:textSize="16sp" />
+        android:padding="16dp"
+        tools:context=".SightHub.GenerateCodeActivity">
 
-    <Button
-        android:id="@+id/generateButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/dataEditText"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
-        android:text="Generate QR Code" />
+        <EditText
+            android:id="@+id/dataEditText"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="@string/et_data"
+            android:padding="12dp"
+            android:textSize="16sp" />
 
-    <ImageView
-        android:id="@+id/qrImageView"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_below="@id/showGeneratedCodeButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
-        android:elevation="4dp"
-        android:scaleType="centerCrop" />
-
-
-    <LinearLayout
-        android:id="@+id/saveShareLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/qrImageView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
-        android:orientation="horizontal">
+        <ImageButton
+            android:id="@+id/speakButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_toEndOf="@id/dataEditText"
+            android:contentDescription="@string/btn_voice"
+            android:src="@drawable/icon_mic" />
 
         <Button
-            android:id="@+id/saveButton"
+            android:id="@+id/generateButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Save QR Code"
-            android:layout_marginEnd="16dp" />
+            android:layout_below="@id/dataEditText"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:text="@string/generate_qr_code" />
+
+        <ImageView
+            android:id="@+id/qrImageView"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_below="@id/showGeneratedCodeButton"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:elevation="4dp"
+            android:scaleType="centerCrop" />
+
+
+        <LinearLayout
+            android:id="@+id/saveShareLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/qrImageView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/saveButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/save_qr"
+                android:layout_marginEnd="16dp" />
+
+            <Button
+                android:id="@+id/shareButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/share_qr" />
+        </LinearLayout>
 
         <Button
-            android:id="@+id/shareButton"
+            android:id="@+id/showGeneratedCodeButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Share QR Code" />
-    </LinearLayout>
+            android:layout_below="@id/generateButton"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:text="@string/show_qr" />
 
-    <Button
-        android:id="@+id/showGeneratedCodeButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/generateButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
-        android:text="Show Generated Code" />
-
-</RelativeLayout>
+    </RelativeLayout>
+</ScrollView>

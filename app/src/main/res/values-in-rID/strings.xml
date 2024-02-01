@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Netra Sync</string>
+
+    <!-- SightHub.GenerateCodeActivity -->
+    <string name="qr_code">qr_code</string>
+    <string name="generate_qr_code">Buat Kode QR</string>
+    <string name="speech_prompt">Katakan sesuatu&#8230;</string>
+    <string name="speech_not_supported">Maaf! Perangkat Anda tidak mendukung input suara</string>
+    <string name="share_title">Bagikan Teks</string>
+    <string name="share_via">via</string>
+    <string name="no_text_to_share">Tidak ada teks untuk dibagikan</string>
+    <string name="qr_generated_success">Kode QR berhasil dibuat</string>
+    <string name="generate_save_first">Buat dan simpan Kode QR terlebih dahulu sebelum menampilkan.</string>
+    <string name="qr_saved_to">Kode QR disimpan di %s</string>
+    <string name="share_qr">Bagikan Kode QR</string>
+    <string name="log_tag_generator">GenerateActivity</string>
+    <string name="error_generating_qr">Error saat membuat kode QR: %s</string>
+    <string name="generate_share_code">Buat Kode QR terlebih dahulu sebelum dibagikan.</string>
+
+    <string name="et_data">Masukkan data untuk Kode QR</string>
+    <string name="btn_voice">Tombol Bicara</string>
+    <string name="save_qr">Simpan Kode QR</string>
+    <string name="show_qr">Tampilkan Kode yang Dibuat</string>
+
+    <string name="welcome_scanner">Selamat datang di pemindai. Hidupkan tombol senter di pojok kanan atas layar jika diperlukan.</string>
+    <string name="turn_off_flash">Senter dimatikan</string>
+    <string name="turn_on_flash">Senter dinyalakan</string>
+    <string name="error_share">Error saat membagikan Kode QR: </string>
+    <string name="welcome_sight_hub">Selamat datang di Sight Hub \nBuat dan pindai kode anda </string>
+    <string name="generate_code">Buat Kode</string>
+    <string name="scan_code">Pindai Kode</string>
+
+    <!-- VoiceMate-->
+    <string name="copy_txt">Teks Tersalin</string>
+    <string name="copy_desc">Teks disalin ke papan klip</string>
+    <string name="copy_failed">Tidak ada teks untuk disalin</string>
+    <string name="tap_on_mic">Ketuk pada mikrofon</string>
+    <string name="copy">Salin</string>
+    <string name="share">Bagikan</string>
+    <string name="welcome_voice_mate">Selamat datang di Voice Mate\nBuat dan pindai teks anda</string>
+    <string name="generate_text">Buat Teks</string>
+    <string name="scan_text">Pindai Teks</string>
+
+</resources>

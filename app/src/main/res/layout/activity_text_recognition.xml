@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".text_recognition.TextRecognitionActivity">
+    tools:context=".VoiceMate.TextRecognitionActivity">
 
     <SurfaceView
         android:id="@+id/cameraView"

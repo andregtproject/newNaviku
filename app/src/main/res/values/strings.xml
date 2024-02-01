@@ -1,13 +1,44 @@
 <resources>
     <string name="app_name">Netra Sync</string>
+
+    <!-- SightHub.GenerateCodeActivity -->
     <string name="qr_code">qr_code</string>
-    <string name="enter_your_info">Enter your info</string>
     <string name="generate_qr_code">Generate QR Code</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="speech_prompt">Say something&#8230;</string>
     <string name="speech_not_supported">Sorry! Your device doesn\'t support speech input</string>
     <string name="share_title">Share Text</string>
     <string name="share_via">via</string>
     <string name="no_text_to_share">No text to share</string>
+    <string name="qr_generated_success">QR Code generated successfully</string>
+    <string name="generate_save_first">Generate and save a QR Code first before displaying.</string>
+    <string name="qr_saved_to">QR Code saved to %s</string>
+    <string name="share_qr">Share QR Code</string>
+    <string name="log_tag_generator">GeneratorActivity</string>
+    <string name="error_generating_qr">Error generating QR code: %s</string>
+    <string name="generate_share_code">Generate a QR Code first before sharing.</string>
+
+    <string name="et_data">Enter data for QR Code</string>
+    <string name="btn_voice">Speak Button</string>
+    <string name="save_qr">Save QR Code</string>
+    <string name="show_qr">Show Generated Code</string>
+
+    <string name="welcome_scanner">Welcome to the scanner. Turn on the flash button in the top right corner of the screen if necessary.</string>
+    <string name="turn_off_flash">Flash turned off</string>
+    <string name="turn_on_flash">Flash turned on</string>
+    <string name="error_share">Error sharing QR Code: </string>
+    <string name="welcome_sight_hub">Welcome to Sight Hub \nGenerate and scan your code </string>
+    <string name="generate_code">Generate Code</string>
+    <string name="scan_code">Scan Code</string>
+
+    <!-- VoiceMate-->
+    <string name="copy_txt">Copied Text</string>
+    <string name="copy_desc">Text copied to clipboard</string>
+    <string name="copy_failed">No text to copy</string>
+    <string name="tap_on_mic">Tap on mic</string>
+    <string name="copy">Copy</string>
+    <string name="share">Share</string>
+    <string name="welcome_voice_mate">Welcome to Voice Mate\nGenerate and scan your text</string>
+    <string name="generate_text">Generate Text</string>
+    <string name="scan_text">Scan Text</string>
 
 </resources>

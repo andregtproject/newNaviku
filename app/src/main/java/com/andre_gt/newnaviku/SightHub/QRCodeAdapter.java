@@ -1,4 +1,4 @@
-package com.andre_gt.newnaviku.mobility;
+package com.andre_gt.newnaviku.SightHub;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -42,7 +42,6 @@ public class QRCodeAdapter extends RecyclerView.Adapter<QRCodeAdapter.QRCodeView
         Bitmap qrCodeBitmap = BitmapFactory.decodeFile(qrCodePath);
         holder.qrCodeImageView.setImageBitmap(qrCodeBitmap);
 
-        // Assuming you have a method to get the translation for the QR Code content
         String translationText = getTranslationForQRCode(qrCodePath);
         holder.translationTextView.setText(translationText);
 

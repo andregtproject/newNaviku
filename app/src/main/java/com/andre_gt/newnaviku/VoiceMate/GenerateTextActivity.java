@@ -1,4 +1,4 @@
-package com.andre_gt.newnaviku.text_recognition;
+package com.andre_gt.newnaviku.VoiceMate;
 
 import android.content.ActivityNotFoundException;
 import android.content.ClipData;
@@ -57,10 +57,12 @@ public class GenerateTextActivity extends AppCompatActivity {
 
     private void copyTextToClipboard(String text) {
         ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-        ClipData clip = ClipData.newPlainText("Copied Text", text);
+        ClipData clip = ClipData.newPlainText(getString(R.string.copy_txt), text);
         if (clipboard != null) {
             clipboard.setPrimaryClip(clip);
-            Toast.makeText(this, "Text copied to clipboard", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.copy_desc), Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, getString(R.string.copy_failed), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -72,7 +74,6 @@ public class GenerateTextActivity extends AppCompatActivity {
             shareIntent.setType("text/plain");
             shareIntent.putExtra(Intent.EXTRA_TEXT, textToShare);
 
-            // Add your custom strings for sharing
             String shareTitle = getString(R.string.share_title);
             String shareVia = getString(R.string.share_via);
 

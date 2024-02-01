@@ -8,7 +8,7 @@
         <entry key="..\:/Sistem Informasi 2022/Semester 3/newNaviku/app/src/main/res/layout/activity_display_generated_code.xml" value="0.14285714285714285" />
         <entry key="..\:/Sistem Informasi 2022/Semester 3/newNaviku/app/src/main/res/layout/activity_display_qrcode_details.xml" value="0.14285714285714285" />
         <entry key="..\:/Sistem Informasi 2022/Semester 3/newNaviku/app/src/main/res/layout/activity_generate_code.xml" value="0.14402173913043478" />
-        <entry key="..\:/Sistem Informasi 2022/Semester 3/newNaviku/app/src/main/res/layout/activity_generate_text.xml" value="0.26927083333333335" />
+        <entry key="..\:/Sistem Informasi 2022/Semester 3/newNaviku/app/src/main/res/layout/activity_generate_text.xml" value="0.1" />
         <entry key="..\:/Sistem Informasi 2022/Semester 3/newNaviku/app/src/main/res/layout/activity_home.xml" value="0.14402173913043478" />
         <entry key="..\:/Sistem Informasi 2022/Semester 3/newNaviku/app/src/main/res/layout/activity_home_mobility.xml" value="0.26927083333333335" />
         <entry key="..\:/Sistem Informasi 2022/Semester 3/newNaviku/app/src/main/res/layout/activity_home_text.xml" value="0.26927083333333335" />
@@ -27,6 +27,7 @@
         <entry key="..\:/Sistem Informasi 2022/Semester 3/newNaviku/app/src/main/res/layout/fragment_todo_list.xml" value="0.26927083333333335" />
         <entry key="..\:/Sistem Informasi 2022/Semester 3/newNaviku/app/src/main/res/layout/item_qrcode.xml" value="0.14235055724417425" />
         <entry key="..\:/Sistem Informasi 2022/Semester 3/newNaviku/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.26927083333333335" />
+        <entry key="..\:/Sistem Informasi 2022/Semester 3/newNaviku/app/src/main/res/xml/file_paths.xml" value="0.15520833333333334" />
       </map>
     </option>
   </component>

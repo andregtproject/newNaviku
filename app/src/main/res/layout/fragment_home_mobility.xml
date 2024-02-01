@@ -22,7 +22,7 @@
         android:layout_marginEnd="20dp"
         android:gravity="center"
         android:padding="4dp"
-        android:text="Welcome to QR Code \n Scanner and Generator"
+        android:text="@string/welcome_sight_hub"
         android:textAlignment="center"
         android:textColor="@color/yellow"
         android:textSize="20sp"
@@ -31,23 +31,23 @@
     <Button
         android:id="@+id/QRCodeGeneratorBtn"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="80dp"
         android:layout_below="@+id/heading"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="20dp"
         android:background="@drawable/button_back"
-        android:text="Generate QR Code"
+        android:text="@string/generate_code"
         android:textAllCaps="false" />
 
     <Button
         android:id="@+id/QRCodeScannerBtn"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="80dp"
         android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:text="Scan QR Code"
+        android:text="@string/scan_code"
         android:textAllCaps="false"
         android:layout_below="@+id/QRCodeGeneratorBtn"
         android:background="@drawable/button_back" />

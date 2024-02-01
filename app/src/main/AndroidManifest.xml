@@ -19,28 +19,22 @@
         android:theme="@style/Theme.NewNaviku"
         tools:targetApi="31">
         <activity
-            android:name=".mobility.DisplayQRCodeDetailsActivity"
+            android:name=".SightHub.DisplayQRCodeDetailsActivity"
             android:exported="false" />
         <activity
-            android:name=".mobility.DisplayGeneratedCodeActivity"
+            android:name=".SightHub.DisplayGeneratedCodeActivity"
             android:exported="false" />
         <activity
-            android:name=".text_recognition.HomeTextActivity"
+            android:name=".VoiceMate.GenerateTextActivity"
             android:exported="true" />
         <activity
-            android:name=".text_recognition.GenerateTextActivity"
+            android:name=".VoiceMate.TextRecognitionActivity"
             android:exported="true" />
         <activity
-            android:name=".text_recognition.TextRecognitionActivity"
+            android:name=".SightHub.ScannerActivity"
             android:exported="true" />
         <activity
-            android:name=".mobility.ScannerActivity"
-            android:exported="true" />
-        <activity
-            android:name=".mobility.GenerateCodeActivity"
-            android:exported="true" />
-        <activity
-            android:name=".mobility.HomeMobilityActivity"
+            android:name=".SightHub.GenerateCodeActivity"
             android:exported="true" />
         <activity
             android:name=".MainActivity"
@@ -54,6 +48,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+            <provider
+                android:name="androidx.core.content.FileProvider"
+                android:authorities="${applicationId}.provider"
+                android:exported="false"
+                android:grantUriPermissions="true">
+                <meta-data
+                    android:name="android.support.FILE_PROVIDER_PATHS"
+                    android:resource="@xml/file_paths" />
+            </provider>
+
     </application>
 
 </manifest>

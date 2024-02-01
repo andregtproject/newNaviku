@@ -1,4 +1,4 @@
-package com.andre_gt.newnaviku.text_recognition;
+package com.andre_gt.newnaviku.VoiceMate;
 
 import android.content.Intent;
 import android.os.Bundle;

@@ -1,4 +1,4 @@
-package com.andre_gt.newnaviku.mobility;
+package com.andre_gt.newnaviku.SightHub;
 
 import android.content.Intent;
 import android.os.Bundle;

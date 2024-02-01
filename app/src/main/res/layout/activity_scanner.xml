@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".mobility.ScannerActivity">
+    tools:context=".SightHub.ScannerActivity">
 
     <me.dm7.barcodescanner.zxing.ZXingScannerView
         android:id="@+id/scannerView"
@@ -24,13 +24,13 @@
 
     <ToggleButton
         android:id="@+id/flashToggleButton"
-        android:layout_width="150dp"
+        android:layout_width="200dp"
         android:layout_height="100dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="16dp"
-        android:textOff="Flash Off"
-        android:textOn="Flash On" />
+        android:textOff="@string/turn_off_flash"
+        android:textOn="@string/turn_on_flash" />
 
 
 

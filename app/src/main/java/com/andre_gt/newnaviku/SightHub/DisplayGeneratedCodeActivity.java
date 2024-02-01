@@ -1,4 +1,4 @@
-package com.andre_gt.newnaviku.mobility;
+package com.andre_gt.newnaviku.SightHub;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -36,7 +36,7 @@ public class DisplayGeneratedCodeActivity extends AppCompatActivity implements Q
 
     private List<String> getSavedQRCodePaths() {
         List<String> paths = new ArrayList<>();
-        String directoryName = "Netra Sync";
+        String directoryName = getString(R.string.app_name);
         File directory = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), directoryName);
 
         if (directory.exists() && directory.isDirectory()) {

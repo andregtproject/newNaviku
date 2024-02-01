@@ -1,4 +1,4 @@
-package com.andre_gt.newnaviku.mobility;
+package com.andre_gt.newnaviku.SightHub;
 
 import androidx.appcompat.app.AppCompatActivity;
 
